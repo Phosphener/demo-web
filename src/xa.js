@@ -5,7 +5,7 @@
 
 // Root url
 var ROOTURL = location.origin;
-var SERVER_HOST = "http://localhost:3000"
+var SERVER_HOST = "http://xlabs.uthoft.com"
 
 // the key of cache 
 //var web_id = window.location.href;
@@ -82,24 +82,30 @@ function open_permission_form() {
   });
 }
 
+var componentPosition = {};
+
 function frontEndSupport() {
   // This is the temporary implementation of the HTML5 postMessage
   // to enable cross domain communication.
   // This allows the FrontEnd to be informed about the location of
   // the tracking components. (via iframe)
-  var componentPosition = {};
-  var trackedComponents = $('[' + Tagging.attributeName + ']');
 			
   // Listen to the request from the FrontEnd
   window.addEventListener("message", function (event) {
 				
     // Check if the message is from front end.
     // FIXME: Remember to fix me in production. 
-    if (event.origin == "file://") {
-
+    if (event.origin.includes("xlabs-admin.uthoft.com")) {
+      handleMessage(event);
     }
 
-    if (event.data == 'location') {
+  }, false);
+}
+
+function handleMessage(event) {
+  var trackedComponents = $('[' + Tagging.attributeName + ']');
+  
+  if (event.data == 'location') {
       // Return the document?
       var scrollLeft = window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft;
       var scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
@@ -129,10 +135,10 @@ function frontEndSupport() {
           'width': '100%',
           'z-index': 5000
         });
-				
+        
       // Return the position information back to
       // the front end. 
-					
+          
       event.source.postMessage(componentPosition, "*");
 
     } else {
@@ -142,17 +148,15 @@ function frontEndSupport() {
       for (componentName in componentOverview) {
         createOverlay(componentPosition[componentName], componentName, componentOverview[componentName]);
       }
-					
+          
       // Register another message handler to add overlay
       // $("body").append(event.data);
-					
+          
       $(".view .mask").on('click', 'a', function (e) {
         var name = $(this).attr("data-overlay-name");
         event.source.postMessage(name, "*");
       });
-		}
-
-  }, false);
+    }
 }
 
 function createOverlay(position, name, descriptions) {
