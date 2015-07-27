@@ -96,9 +96,9 @@ function frontEndSupport() {
     // Check if the message is from front end.
     // FIXME: Remember to fix me in production. 
     if (event.origin.includes("xlabs-admin.uthoft.com")) {
-      handleMessage(event);
+      //handleMessage(event);
     }
-
+    handleMessage(event);
   }, false);
 }
 
@@ -122,12 +122,12 @@ function handleMessage(event) {
 
       var docHeight = $(document).height();
 
-      $("body").append("<div id='overlay'></div>");
+      $("body").append("<div id='xa-overlay'></div>");
 
-      $("#overlay")
+      $("#xa-overlay")
         .height(docHeight)
         .css({
-          'opacity': 0.2,
+          'opacity': 0,
           'position': 'absolute',
           'top': 0,
           'left': 0,
@@ -152,7 +152,7 @@ function handleMessage(event) {
       // Register another message handler to add overlay
       // $("body").append(event.data);
           
-      $(".view .mask").on('click', 'a', function (e) {
+      $(".xa-view .xa-mask").on('click', 'a', function (e) {
         var name = $(this).attr("data-overlay-name");
         event.source.postMessage(name, "*");
       });
@@ -165,16 +165,17 @@ function createOverlay(position, name, descriptions) {
   $(componentOverlay).width(position.width);
   $(componentOverlay).offset({ top: position.top, left: position.left });
   componentOverlay.style.position = "absolute";
-  componentOverlay.style.backgroundColor = "#2ecc71";
-  componentOverlay.style.opacity = "0.5";
-  componentOverlay.style.zIndex = 9999;
+  componentOverlay.style.opacity = "0.8";
+  componentOverlay.style.zIndex = 9998;
+  componentOverlay.style.display = "block";
+  componentOverlay.style._display = "inline-block";
 
   var viewOverlay = $("#component-overlay").clone();
-  viewOverlay.find(".mask h2").text(name);
+  viewOverlay.find(".xa-mask h1").text(name);
 
-  viewOverlay.find(".mask h2").after(("<p>" + 'session time' + ":" + descriptions.sessionTime + "</p>"));
-  viewOverlay.find(".mask h2").after(("<p>" + 'fixation number' + ":" + descriptions.fixationNumber + "</p>"));
-  viewOverlay.find(".mask a").attr("data-overlay-name", name);
+  viewOverlay.find(".xa-mask h1").after(("<p style=\"font-family: \'Arial\'; font-size: 15px; font-style:none;\">" + 'session time' + ": " + descriptions.sessionTime + "</p>"));
+  viewOverlay.find(".xa-mask h1").after(("<p style=\"font-family: \'Arial\'; font-size: 15px; font-style:none;\">" + 'fixation number' + ": " + descriptions.fixationNumber + "</p>"));
+  viewOverlay.find(".xa-mask a").attr("data-overlay-name", name);
 
   $(componentOverlay).append(viewOverlay.html());
 
