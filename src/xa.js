@@ -131,7 +131,6 @@ function handleMessage(event) {
           'position': 'absolute',
           'top': 0,
           'left': 0,
-          'background-color': 'black',
           'width': '100%',
           'z-index': 5000
         });
@@ -168,7 +167,6 @@ function createOverlay(position, name, descriptions) {
   componentOverlay.style.opacity = "0.8";
   componentOverlay.style.zIndex = 9998;
   componentOverlay.style.display = "block";
-  componentOverlay.style._display = "inline-block";
 
   var viewOverlay = $("#component-overlay").clone();
   viewOverlay.find(".xa-mask h1").text(name);
