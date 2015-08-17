@@ -262,9 +262,9 @@
 	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 	<!-- Load custom js for theme -->
 	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="http://xlabs-admin.uthoft.com/scripts/xLabsAnalytics.js"></script>
+	<script type="text/javascript" src="js/xLabsAnalytics.js"></script>
 	<script type="text/javascript">xa.start();</script>
-	<div id="component-overlay">
+	<div id="component-overlay" style="display:none;">
 		<div class="xa-view xa-view-first">
 			<div class="xa-mask">
 				<h1 style="color:white;">Title</h1>
@@ -280,18 +280,15 @@
 		min-width: 100%;
 		min-height: 100%;
 		float: left;
-		border: 10px solid #fff;
-		padding: 10px;
+		border: 10px solid white;
 		overflow: hidden;
 		position: absolute;
 		text-align: center;
-		//box-shadow: 1px 1px 2px #e6e6e6;
 		cursor: default;
-		background-color: #3c8dbc;
+		background-color: black;
 	}
 	.xa-view .xa-mask, .xa-view .content {		
 		display: none;
-		
 	}
 	.xa-view h1 {
 		text-transform: uppercase;
@@ -300,16 +297,19 @@
 		font-size: 17px;
 		padding: 10px;
 		background-color: grey;
-		margin: 20px 0 0 0
+		margin: 20px 0 0 0;
+		display:none;
 	}
-	.xa-view p {
+	.xa-view-first p {
 		font-family: Arial, serif;
 		font-size: 12px;
 		position: relative;
 		color: #fff;
 		padding: 5px;
 		text-align: center;
+		display:none;
 	}
+
 
 	.xa-view-first:hover .xa-mask { 
 		background-color: black;
@@ -320,8 +320,77 @@
 		overflow: hidden;
 		opacity: 1;
 	}
-	.xa-view .xa-btn {
+
+	/* animation for h1 */
+	.xa-view-first:hover h1 {
+		display: block;
+		animation: showAll 0.5s;
+		-moz-animation: showAll 0.5s;
+		-webkit-animation: showAll 0.5s;
+		-o-animation: showAll 0.5s;
+	}
+
+	@keyframes showAll {
+		0% {opacity: 0;}
+		100% {opacity: 1;}
+	}
+
+	@-moz-keyframes showAll {
+		0% {opacity: 0;}
+		100% {opacity: 1;}
+	}
+
+	@-webkit-keyframes showAll {
+		0% {opacity: 0;}
+		100% {opacity: 1;}
+	}
+
+	@-o-keyframes showAll {
+		0% {opacity: 0;}
+		100% {opacity: 1;}
+	}
+
+    /* animation for p */
+	.xa-view-first:hover p 
+	{
+		display: block;
+		animation: moveToTop 0.5s;
+		-moz-animation: moveToTop 0.5s;
+		-webkit-animation: moveToTop 0.5s;
+		-o-animation: moveToTop 0.5s;
+	}
+
+    /* animation for button */
+	.xa-view-first:hover .xa-btn {
 		display: inline-block;
+		animation: moveToTop 0.5s;
+		-moz-animation: moveToTop 0.5s;
+		-webkit-animation: moveToTop 0.5s;
+		-o-animation: moveToTop 0.5s;
+	}
+
+	@keyframes moveToTop {
+		0% {transform: translateY(100px);}
+		100% {transform: translateY(0px);}
+	}
+
+	@-moz-keyframes moveToTop {
+		0% {transform: translateY(100px);}
+		100% {transform: translateY(0px);}
+	}
+
+	@-webkit-keyframes moveToTop {
+		0% {transform: translateY(100px);}
+		100% {transform: translateY(0px);}
+	}
+
+	@-o-keyframes moveToTop {
+		0% {transform: translateY(100px);}
+		100% {transform: translateY(0px);}
+	}
+
+	.xa-view .xa-btn {
+		display: none;
 		padding: 6px 12px;
 		margin-bottom: 0;
 		font-size: 14px;
@@ -342,7 +411,7 @@
 		color: #fff;
 		background-color: #3c8dbc;
 		border-color: #2e6da4;
-		margin-bottom: 5px;
+		margin-bottom: 15px;
 	}
 	.xa-view .xa-btn:focus,
 	.xa-view .xa-btn:active:focus,
