@@ -285,6 +285,10 @@
 		text-align: center;
 		cursor: default;
 		background-color: transparent;
+		background-image: url('https://b399c09ffe0ba1a9b89e049b9cf83764e81773d2.googledrive.com/host/0Bzoa7gPAZkDvflJfcDEwSmwtWklOYk8yQUtNMlJUWUltRWwwa3pBVXhicFpWTHhOdi1aUFk/Info.png');
+		background-position: 15px 5px;
+		background-repeat: no-repeat;
+		background-size: 30px 30px;
 	}
 	.xa-view .xa-mask, .xa-view .content {		
 		display: none;
@@ -309,15 +313,18 @@
 		display:none;
 	}
 
-
+    .xa-view:hover {
+    	background-color: black;
+    }
 	.xa-view-first:hover .xa-mask { 
 		background-color: black;
 		display: block;
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
 		position: relative;
 		overflow: hidden;
 		opacity: 1;
+		z-index: 9999;
 	}
 
 	/* animation for h1 */
