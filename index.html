@@ -264,7 +264,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/xLabsAnalytics.js"></script>
 	<script type="text/javascript">xa.start();</script>
-	<div id='component-overlay' style='display:none;'>
+	<!-- <div id='component-overlay' style='display:none;'>
 		<div class='xa-view xa-view-first'>
 			<div class='xa-mask'>
 				<h1 style='color:white;'>Title</h1>
@@ -272,11 +272,11 @@
 				<a href='' class='xa-btn'>Read More</a>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- The style should be dynamically loaded once -->
 	<!-- It's confirmed that the front end is drawing overlay -->
 	<style>
-	.xa-view {
+	/*.xa-view {
 		min-width: 100%;
 		min-height: 100%;
 		float: left;
@@ -325,10 +325,10 @@
 		overflow: hidden;
 		opacity: 1;
 		z-index: 9999;
-	}
+	}*/
 
 	/* animation for h1 */
-	.xa-view-first:hover h1 {
+	/*.xa-view-first:hover h1 {
 		display: block;
 		animation: showAll 0.5s;
 		-moz-animation: showAll 0.5s;
@@ -354,20 +354,20 @@
 	@-o-keyframes showAll {
 		0% {opacity: 0;}
 		100% {opacity: 1;}
-	}
+	}*/
 
     /* animation for p */
-	.xa-view-first:hover p 
+	/*.xa-view-first:hover p 
 	{
 		display: block;
 		animation: moveToTop 0.5s;
 		-moz-animation: moveToTop 0.5s;
 		-webkit-animation: moveToTop 0.5s;
 		-o-animation: moveToTop 0.5s;
-	}
+	}*/
 
     /* animation for button */
-	.xa-view-first:hover .xa-btn {
+	/*.xa-view-first:hover .xa-btn {
 		display: inline-block;
 		animation: moveToTop 0.5s;
 		-moz-animation: moveToTop 0.5s;
@@ -434,7 +434,7 @@
 	.xa-view .xa-btn.focus {
 		color: #333;
 		text-decoration: none;
-	}
+	}*/
 	</style>
 </body>
 
